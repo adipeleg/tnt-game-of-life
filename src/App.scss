@@ -1,6 +1,14 @@
 .App {
 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   .App-header {
-    background-color: green;
+    background-color: #060684;
+    color: white;
+    padding: 1px 10px;
+    font-weight: 500;
   }
 }

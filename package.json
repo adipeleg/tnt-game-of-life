@@ -15,7 +15,11 @@
     "react-scripts": "5.0.1",
     "sass": "^1.54.9",
     "typescript": "^4.8.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.185"
   },
   "scripts": {
     "start": "react-scripts start",
