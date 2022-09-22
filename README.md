@@ -52,3 +52,5 @@ GamePlay
 2 - start the clock
 3 - drop bombs (to kill opponent germs) and super food (to increase growth)
 4- clock done - the winner is the one with the largest number of germs
+
+we can start with 1 player game - the germs vs user
