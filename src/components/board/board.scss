@@ -1,11 +1,14 @@
 .board-wrapper {
-  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .board {
-    width: 80%;
+    width: auto;
     margin: auto;
     background-color: #f6f7f9;
     border-radius: 4px;
-    border: 2px solid #e7dbdb;
+    border: 1px solid #e7dbdb;
   }
 
   .row {
@@ -13,9 +16,9 @@
   }
 
   .column {
-    width: 3.333%;
+    width: 21px;
     height: 21px;
-    border: 1px solid gray;
+    border: 0.1px solid lightgray;
     cursor: pointer;
 
     &.full {
