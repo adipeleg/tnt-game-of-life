@@ -113,7 +113,7 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
         return 1;
       }
     } else {
-      if (totalScope === 3) {
+      if (totalScope ===  3 || totalScope === 4) {
         return 1
       } else {
         return 0;
