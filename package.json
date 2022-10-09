@@ -10,16 +10,22 @@
     "@types/node": "^16.11.59",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
+    "lodash": "^4.17.21",
+    "pusher": "^5.1.1-beta",
+    "pusher-js": "^7.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "sass": "^1.54.9",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.3",
     "typescript": "^4.8.3",
-    "web-vitals": "^2.1.4",
-    "lodash": "^4.17.21"
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.185"
+    "@types/lodash": "^4.14.185",
+    "@types/react-router-dom": "^5.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
