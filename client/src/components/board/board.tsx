@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import _ from 'lodash'
 import { FunctionComponent, useEffect, useState } from 'react'
+import { Button } from 'semantic-ui-react'
 import { imageOptions } from '../../services/image.options'
 import { socketService } from '../../services/socket.service'
 import { UserInfo } from '../user-info/user-info'
@@ -22,7 +23,8 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
   const [currentTime, setCurrentTime] = useState(0)
   const [currentIdx, setIndex] = useState<number>(0)
   const [answers, setAnswers] = useState<{ user: string; score: number }[]>([])
-  const [update, setUpdate] = useState<boolean>(false);
+  const [options, setOptions] = useState<{ index: number; text: string }[]>([])
+  const [update, setUpdate] = useState<boolean>(false)
 
   useEffect(() => {
     const ps = _.times(numOfColumns * numOfRows, _.constant(0))
@@ -33,7 +35,7 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
     const socket = socketService.getSocket()
     socket.on(
       'events',
-      function (data: { userName: string; answer: string; type: string }) {
+      (data: { userName: string; answer: string; type: string }) => {
         if (data.type === 'answer') {
           // _.remove(answers, (it) => it.user === data.userName)
           const a: { user: string; score: number }[] = [
@@ -43,7 +45,7 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
           setAnswers(
             _.cloneDeep(a)
             // { user: data.userName, score: calcScore(data) },
-            )
+          )
           console.log(answers, a)
           console.log('event', data)
         }
@@ -53,8 +55,9 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
 
   const calcScore = (data: { userName: string; answer: string }): number => {
     const ans = imageOptions[currentIdx].answer
-    console.log(answers);
-    const userData = _.find(answers, it => it.user === data.userName)?.score || 0;
+    console.log(answers)
+    const userData =
+      _.find(answers, (it) => it.user === data.userName)?.score || 0
     // console.log(answers, answers)
     return ans === data.answer ? userData + 1 : userData
   }
@@ -67,6 +70,7 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
         return { index, text: it }
       }
     )
+    setOptions(options)
     socketService.publishOptions(options)
     setIndex(currentIdx + 1)
   }
@@ -203,11 +207,22 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
     }
   }
 
+  const setOptionsOnBoard = () => {
+    return options.map((val, index) => {
+      return (
+        <Button key={val.index} onClick={() => {}}>
+          {val.text}
+        </Button>
+      )
+    })
+  }
+
   return (
     <div className='board-wrapper'>
-      <h2>{title}</h2>
+      {/* <h2>{title}</h2> */}
       <h3>Time: {currentTime / 1000}</h3>
-      <div className='user-info-container'>
+      <div className='options'>{setOptionsOnBoard()}</div>
+      {/* <div className='user-info-container'>
         <UserInfo
           germs={getGermsCount()}
           food={20}
@@ -215,7 +230,7 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
           germsOnBoard={getGermsOnBoardCount()}
           name={'user1'}
         ></UserInfo>
-      </div>
+      </div> */}
       <div className='board'>{getboard()}</div>
       {/* {getGermsOnBoard === numOfFirstGerms && ( */}
       {currentIdx === 0 && (
@@ -228,9 +243,7 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
           next
         </div>
       )}
-      {currentTime > 0 && (
-       <UserTable data={answers}></UserTable>
-      )}
+      {currentTime > 0 && <UserTable data={answers}></UserTable>}
       {/* )} */}
     </div>
   )
