@@ -1,0 +1,26 @@
+.users-table {
+    position: absolute;
+    left: 100px;
+    top: 20%;
+
+    td, th {
+        width: 200px;
+        height: 50px;
+        font-size: 26px;
+        text-align: center;
+        background-color: black;
+        color: white;
+    }
+
+    td {
+        color: rgb(22, 22, 148);
+        font-weight: bold;
+        background-color: orange;
+        color: black;
+    }
+
+    tr {
+        border-bottom: 0.5px solid lightgray;
+    }
+}
+

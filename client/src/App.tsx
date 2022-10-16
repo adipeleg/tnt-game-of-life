@@ -7,9 +7,8 @@ import { User } from './components/user/user'
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>
-        <p>TNT Game of Life</p>
-      </header>
+      <div className='guess-who-img'></div>
+
       <Router basename={process.env.REACT_APP_NAME}>
         <Switch>
           <Route exact path='/'>
