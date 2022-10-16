@@ -5,10 +5,23 @@
   bottom: 0;
   right: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .App-header {
     background-color: #060684;
     color: white;
     padding: 1px 10px;
     font-weight: 500;
+  }
+
+  .guess-who-img {
+    width: 701px;
+    height: 160px;
+    background-image: url('../public/guess_who.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
   }
 }

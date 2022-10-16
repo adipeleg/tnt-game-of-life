@@ -1,5 +1,4 @@
 .board-wrapper {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,15 +38,62 @@
 
   .start-game {
     text-align: center;
-    font-size: 24px;
+    font-size: 36px;
     padding: 20px;
     cursor: pointer;
     font-weight: bold;
+    color: crimson;
   }
 
   .options {
     display: flex;
     justify-content: center;
-    margin: 20px;
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .row-options-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        .option-btn {
+          width: 50%;
+          margin-top: 10px;
+          height: 100px;
+          font-size: 42px;
+        }
+      }
+    }
   }
+
+
+  
+
+  .time-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .clock {
+      width: 50px;
+      height: 50px;
+      margin: 20px;
+      margin-bottom: 5px;
+      background-image: url('../../../public/clock.jpg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      animation: tilt-shaking 0.5s;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+
+@keyframes tilt-shaking {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
 }
