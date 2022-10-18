@@ -6,7 +6,9 @@ export class SocketService {
     // private channel;
 
     constructor() {
-        this.socket = socketIO(`http://localhost:8080`);
+        const domain = window.location.hostname;
+        const url = _.includes(domain, 'localhost') ? 'http://localhost' : 'https://' + domain;
+        this.socket = socketIO(`${url}:8080`);
         
         this.socket.on('connect',  () => {
             console.log('Connected');
