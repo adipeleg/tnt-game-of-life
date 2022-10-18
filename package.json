@@ -6,12 +6,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run ui:install && npm run ui:build && npm run server:install && npm run server:build",
+    "build": "npm run ui:install && npm run ui:build",
     "server:build": "cd server/game-of-life-server && npm run build && cd .. && cd ..",
     "ui:build": "cd client && npm run build && cd ..",
     "ui:install": "cd client && npm install && cd ..",
     "server:install": "cd server/game-of-life-server && npm install && cd .. && cd ..",
-    "start": "cd server/game-of-life-server && npm start",
+    "start": "cd server/game-of-life-server && npm run start:prod",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node server/game-of-life-server/dist/main"
   }
