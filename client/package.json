@@ -23,11 +23,11 @@
     "socket.io": "^4.5.2",
     "typescript": "^4.8.3",
     "web-vitals": "^2.1.4",
-    "socket.io-client": "^4.5.2"
+    "socket.io-client": "^4.5.2",
+    "@types/react-router-dom": "^5.3.3"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.185",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/lodash": "^4.14.185"
   },
   "scripts": {
     "start": "react-scripts start",
