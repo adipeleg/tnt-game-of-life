@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import socketIO from 'socket.io-client';
 
 export class SocketService {
@@ -5,7 +6,7 @@ export class SocketService {
     // private channel;
 
     constructor() {
-        this.socket = socketIO('http://localhost:9000');
+        this.socket = socketIO(`http://localhost:8080`);
         
         this.socket.on('connect',  () => {
             console.log('Connected');
