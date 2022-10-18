@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run ui:install && npm run ui:build && npm run server:install && npm run server:build",
+    "build": "npm run ui:install && npm run ui:build",
     "server:build": "cd server/game-of-life-server && nest build && cd .. && cd ..",
     "ui:build": "cd client && npm run build && cd ..",
     "ui:install": "cd client && npm install && cd ..",
