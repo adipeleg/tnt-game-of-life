@@ -1,0 +1,18 @@
+{
+  "name": "game-of-life-server",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "npm run ui:install && npm run ui:build && npm run server:install && npm run server:build",
+    "server:build": "cd server/game-of-life-server && nest build && cd .. && cd ..",
+    "ui:build": "cd client && npm run build && cd ..",
+    "ui:install": "cd client && npm install && cd ..",
+    "server:install": "cd server/game-of-life-server && npm install && cd .. && cd ..",
+    "start": "cd server/game-of-life-server && nest start",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node server/game-of-life-server/dist/main"
+  }
+}
