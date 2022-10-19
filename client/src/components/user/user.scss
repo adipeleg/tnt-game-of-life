@@ -7,10 +7,38 @@
   justify-content: center;
   align-items: center;
   margin-top: 10%;
+  width: 100%;
+
+  .ui input {
+    border-radius: 5px !important;
+  }
+  .ui button {
+    margin-left: 20px;
+    border-radius: 5px !important;
+    height: 38px;
+
+  }
 }
 .hello {
   margin-bottom: 21px;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
 }
-.message {
-    
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .row-options-container {
+    display: flex;
+    flex-direction: row;
+    width: 340px;
+    .option-btn {
+      width: 50%;
+      margin-top: 10px;
+      height: 60px;
+      font-size: 18px;
+    }
+  }
 }
