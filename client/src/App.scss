@@ -24,4 +24,17 @@
     background-position: center;
     
   }
+
+
+  @media only screen and (max-width: 600px) {
+    .guess-who-img {
+      width: 250px;
+      height: 70px;
+      background-image: url('../public/guess_who.jpg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      margin-top: 100px;
+    }
+  }
 }

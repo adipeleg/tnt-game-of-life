@@ -60,6 +60,34 @@ export const User = () => {
   }
 
   const setOptions = () => {
+
+    console.log(answers)
+    return (answers && answers.length >0 && <div className='options-container'>
+    <div className='row-options-container'>
+      <Button color='blue' className='option-btn' key={answers[0].index} onClick={() => answerQuestion(answers[0].text)}>
+        {' '}
+        {answers[0].text}{' '}
+      </Button>
+      <Button color='red' className='option-btn' key={answers[1].index} onClick={() => answerQuestion(answers[1].text)}>
+        {' '}
+        {answers[1].text}{' '}
+      </Button>
+    </div>
+    <div className='row-options-container'>
+      <Button color='yellow' className='option-btn' key={answers[2].index} onClick={() => answerQuestion(answers[2].text)}>
+        {' '}
+        {answers[2].text}{' '}
+      </Button>
+      <Button color='green' className='option-btn' key={answers[3].index} onClick={() => answerQuestion(answers[3].text)}>
+        {' '}
+        {answers[3].text}{' '}
+      </Button>
+    </div>
+  </div> )
+
+
+
+
     return answers.map((val, index) => {
       return (
         <Button key={val.index} onClick={() => answerQuestion(val.text)}>
@@ -78,7 +106,7 @@ export const User = () => {
             onChange={addUserName}
             //   disabled={true}
           />
-          <Button type='submit' onClick={saveUserName}>
+          <Button color='blue' type='submit' onClick={saveUserName}>
             Enter
           </Button>
           {error && <div className='error'>user name is required</div>}
