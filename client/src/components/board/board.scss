@@ -90,10 +90,50 @@
 }
 
 
+.winners {
+  width: 1000px;
+  height: 1000px;
+  background-image: url('../../../public/winners.jpeg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: tilt-shaking-winners 0.9s;
+  animation-iteration-count: infinite;
+
+  .first {
+    position: absolute;
+    font-size: 36px;
+    left: 460px;
+    top: 700px;
+  }
+
+  .second {
+    position: absolute;
+    font-size: 36px;
+    left: 190px;
+    top: 730px;
+  }
+
+  .third {
+    position: absolute;
+    font-size: 36px;
+    left: 740px;
+    top: 750px;
+  }
+}
+
 @keyframes tilt-shaking {
   0% { transform: rotate(0deg); }
   25% { transform: rotate(5deg); }
   50% { transform: rotate(0eg); }
   75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+@keyframes tilt-shaking-winners {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-1deg); }
   100% { transform: rotate(0deg); }
 }

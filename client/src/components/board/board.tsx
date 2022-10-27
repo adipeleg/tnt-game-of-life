@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import _ from 'lodash';
 import { FunctionComponent, useEffect, useState } from 'react';
-import { Button } from 'semantic-ui-react';
 import { imageOptions } from '../../services/image.options';
 import { socketService } from '../../services/socket.service';
 import { UserInfo } from '../user-info/user-info';
 import { UserTable } from '../user-table/user-table';
+import { Button, Modal } from 'semantic-ui-react'
 import './board.scss';
 
 type BoardProps = {
@@ -22,7 +22,8 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
   const [getGermsOnBoard, setGermsOnBoard] = useState(0);
   const [currentTime, setCurrentTime] = useState(30000);
   const [currentIdx, setIndex] = useState<number>(0);
-  const [answers, setAnswers] = useState<{ user: string; score: number }[]>([]);
+  const [gameFinished, setGameFinished] = useState(false);
+  const [answers, setAnswers] = useState<{ user: string; score: number, counter: number }[]>([]);
   const [options, setOptions] = useState<{ index: number; text: string }[]>([
     { index: 0, text: 'Option A' },
     { index: 1, text: 'Option B' },
@@ -55,12 +56,15 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
       let newAnswers;
       if (answers.filter((a) => a.user === userAnswerData.userName).length > 0) {
         answers.filter((a) => a.user === userAnswerData.userName)[0].score = calcScore(userAnswerData);
+        answers.filter((a) => a.user === userAnswerData.userName)[0].counter++;
+        newAnswers = [...answers];
       } else {
-        answers.push({ user: userAnswerData.userName, score: calcScore(userAnswerData) });
+        answers.push({ user: userAnswerData.userName, score: calcScore(userAnswerData), counter: 1 });
         newAnswers = [...answers];
       }
       if (newAnswers) {
-        setAnswers(newAnswers.sort((a, b) => a.score > b.score ? -1 : 1));
+        const tmpAns = newAnswers.sort((a, b) => a.score > b.score ? -1 : 1);
+        setAnswers(tmpAns);
       }
     }
   }, [userAnswerData]);
@@ -152,9 +156,13 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
   };
 
   const startNextStep = () => {
-    setGameStatus(1);
-    prepareBoardToNextStep();
-    publishOptions();
+    if (currentIdx === imageOptions.length && currentIdx > 0) {
+      setGameFinished(true);
+    } else {
+      setGameStatus(1);
+      prepareBoardToNextStep();
+      publishOptions();
+    }
   };
 
   const startTheTimer = () => {
@@ -272,7 +280,7 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
         )}
         {currentIdx > 0 && gameStatus !== 1 && (
           <div className='start-game' onClick={() => startNextStep()}>
-            Next Question
+            { currentIdx === imageOptions.length ? 'Results' : 'Next Question' }
           </div>
         )}
 
@@ -283,6 +291,17 @@ export const Board: FunctionComponent<BoardProps> = ({ title }) => {
         )}
       </div>
       {currentTime > 0 && <UserTable data={answers}></UserTable>}
+
+      {gameFinished && <Modal
+      basic
+      size='small'
+      open={true}>
+      <div className='winners'>
+        <div className='first'>{answers && answers.length >= 1 ? answers[0].user : ''}</div>
+        <div className='second'>{answers && answers.length >= 2 ? answers[1].user : ''}</div>
+        <div className='third'>{answers && answers.length >= 3 ? answers[2].user : ''}</div>
+      </div>
+    </Modal>}
     </>
   );
 };

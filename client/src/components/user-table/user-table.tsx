@@ -2,7 +2,7 @@ import _ from "lodash";
 import './user-table.scss'
 
 export interface UserTableProps {
-  data: { user: string; score: number }[]
+  data: { user: string; score: number; counter: number }[]
 }
 
 export const UserTable = (props: UserTableProps) => {
@@ -11,7 +11,8 @@ export const UserTable = (props: UserTableProps) => {
             return (
               <tr>
                 <td>{it.user}</td>
-                <td>{it.score}</td>
+                <td>{it.counter}</td>
+                <td>{it.score.toFixed(1)}</td>
               </tr>
             )
         })
@@ -22,6 +23,7 @@ export const UserTable = (props: UserTableProps) => {
       <table>
         <tr>
           <th>Player Name</th>
+          <th>Questions</th>
           <th>Score</th>
         </tr>
         <tbody>{getTableBody()}</tbody>
