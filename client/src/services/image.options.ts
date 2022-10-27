@@ -22,6 +22,18 @@ export const imageOptions: imageOpt[] = [
         name: 'leonardo.jpeg',
         options: ['Michael J. Fox', 'Ben Affleck', 'Leonardo DiCaprio', 'Tobey Maguire'],
         answer: 'Leonardo DiCaprio'
+    },
+    {
+        category: 'Cars',
+        name: 'mazda.png',
+        options: ['Hyundai', 'Mercedes', 'Lexus', 'Mazda'],
+        answer: 'Mazda'
+    },
+    {
+        category: 'Apps',
+        name: 'opera.png',
+        options: ['Chrome', 'Netscape', 'Opera', 'Safari'],
+        answer: 'Netscape'
     }
 ]
 
