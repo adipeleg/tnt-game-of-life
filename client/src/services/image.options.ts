@@ -33,8 +33,33 @@ export const imageOptions: imageOpt[] = [
         category: 'Apps',
         name: 'opera.png',
         options: ['Chrome', 'Netscape', 'Opera', 'Safari'],
-        answer: 'Netscape'
+        answer: 'Opera'
+    },
+    {
+        category: 'Singers',
+        name: 'moshe.jpeg',
+        options: ['Eden Hason', 'Moshe Peretz', 'Omer Adam', 'Ivri Lider'],
+        answer: 'Moshe Peretz'
+    },
+    {
+        category: 'Logo',
+        name: 'pepsi.jpeg',
+        options: ['Starbucks', 'Twitter', 'Nike', 'Pepsi'],
+        answer: 'Pepsi'
+    },
+    {
+        category: 'Heroes',
+        name: 'batman.jpeg',
+        options: ['Superman', 'Cat woman', 'Batman', 'Hawkeye'],
+        answer: 'Batman'
+    },
+    {
+        category: 'Animals',
+        name: 'koala.jpeg',
+        options: ['Monkey', 'Mouse', 'Bear', 'koala'],
+        answer: 'koala'
     }
+
 ]
 
 export type imageOpt = { category: string, name: string, options: string[], answer: string }
